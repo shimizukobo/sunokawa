@@ -82,8 +82,8 @@ function staticLoadPlaces() {
             location: {
 //                lat: 32.96418400105985,
 //                lng: 132.57354953485188,
-                lat: 32.96882833663498,
-                lng: 132.57365751952673,
+                lat: 32.975065028779326,
+                lng: 132.57416028983047,
             }
         },
 
@@ -106,7 +106,7 @@ function renderPlaces(places, pos) {
         else{
             jsonAltitude = jsonAltitude - 33;
         }
-alert("\nちゃんと撮れるかな ver1.0.2\n須ノ川のクリスマスツリーを見るブラウザAR\n緯度 " + pos.coords.latitude + "\n経度 " + pos.coords.longitude + "\n標高 " + jsonAltitude + "\nボタンをタップすると撮影できます。\n\n初回の起動時には、位置情報を取得がうまくいかない場合は、\n少し時間をおいてブラウザの更新をしてください。");
+alert("\nちゃんと撮れるかな ver1.0.3\n須ノ川のクリスマスツリーを見るブラウザAR\n緯度 " + pos.coords.latitude + "\n経度 " + pos.coords.longitude + "\n標高 " + jsonAltitude + "\nボタンをタップすると撮影できます。\n\n初回の起動時には、位置情報を取得がうまくいかない場合は、\n少し時間をおいてブラウザの更新をしてください。");
     
     places.forEach((place) => {
         let latitude = place.location.lat;
