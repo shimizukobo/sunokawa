@@ -148,4 +148,3 @@ function error(err) {
    alert('Unable to capture current location.');
 }
 
-}
