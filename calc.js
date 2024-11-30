@@ -16,7 +16,7 @@ export class CalcVR {
         this.distance = current.distanceTo(target);
         this.bearing = current.finalBearingTo(target)
         this.currentPosition = currentPosiArg;
-        if(this.distance<500) {
+        if(this.distance < 500) {
             this.newDistance = this.distance;
         }
     //表示位置を計算
