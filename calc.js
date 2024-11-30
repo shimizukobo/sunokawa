@@ -104,7 +104,7 @@ function renderPlaces(places, pos) {
         else{
             jsonAltitude = jsonAltitude - 33;
         }
-alert("\nちゃんと撮れるかな ver1.0.1\n須ノ川のクリスマスツリーを見るブラウザAR\n緯度 " + pos.coords.latitude + "\n経度 " + pos.coords.longitude + "\n標高 " + jsonAltitude + "\nボタンをタップすると撮影できます。\n\n初回の起動時には、位置情報を取得がうまくいかない場合は、\n少し時間をおいてブラウザの更新をしてください。");
+alert("\nちゃんと撮れるかな ver1.0.0\n須ノ川のクリスマスツリーを見るブラウザAR\n緯度 " + pos.coords.latitude + "\n経度 " + pos.coords.longitude + "\n標高 " + jsonAltitude + "\nボタンをタップすると撮影できます。\n\n初回の起動時には、位置情報を取得がうまくいかない場合は、\n少し時間をおいてブラウザの更新をしてください。");
     
     places.forEach((place) => {
         let latitude = place.location.lat;
@@ -118,7 +118,7 @@ alert("\nちゃんと撮れるかな ver1.0.1\n須ノ川のクリスマスツリ
         let model = document.createElement('a-entity');
 //        model.setAttribute('look-at', '[gps-camera]');    //正面を向ける
         model.setAttribute('look-at', '');    //向きを固定する
-        if(distance >= 500){
+        if(cal.distance >= 500){
 jsonAltitude = -(jsonAltitude*(cal.newDistance/cal.distance));
             model.setAttribute('gps-entity-place', `latitude: ${cal.newPosition[0]}; longitude: ${cal.newPosition[1]};`);
         }else {
@@ -129,7 +129,7 @@ jsonAltitude = -jsonAltitude;
         model.setAttribute('position', '0 '+jsonAltitude+' 0');
         model.setAttribute('animation-mixer', '');
         model.setAttribute('scale', `${cal.objectSize}`);
-alert("緯度 " + latitude + "\n経度 " + longitude + "\n標高 " + jsonAltitude + `\n緯度 ${cal.newPosition[0]};\n経度 ${cal.newPosition[1]};`);
+alert(`緯度 ${latitude};\n経度 ${longitude};\n標高 ${jsonAltitude};\n緯度 ${cal.newPosition[0]};\n経度 ${cal.newPosition[1]};`);
         model.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
         });
