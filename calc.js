@@ -14,7 +14,7 @@ export class CalcVR {
         const current = new LatLon(currentPosiArg[0], currentPosiArg[1]);
         const target = new LatLon(targetPosition[0], targetPosition[1]);
         this.distance = current.distanceTo(target);
-alert("距離 " + this.distance);
+alert("1距離 " + this.distance);
         this.bearing = current.finalBearingTo(target);
         this.currentPosition = currentPosiArg;
         if(this.distance < 500) {
@@ -32,7 +32,7 @@ alert("距離 " + this.distance);
         if(distance < 500){
             this.objectSize = '1.0 1.0 1.0';
             this.newDistance = distance;
-alert("距離 " + distance);
+alert("2距離 " + distance);
         }else if(distance <= 1000 && distance >= 500){
 //        if(distance <= 1000 && distance >= 500) {
 //            this.objectSize = '25 25 25';
@@ -120,11 +120,15 @@ jsonAltitude = -(jsonAltitude*(cal.newDistance/cal.distance));
         let model = document.createElement('a-entity');
 //        model.setAttribute('look-at', '[gps-camera]');    //正面を向ける
         model.setAttribute('look-at', '');    //向きを固定する
-        model.setAttribute('gps-entity-place', `latitude: ${cal.newPosition[0]}; longitude: ${cal.newPosition[1]};`);
+        if(distance >= 500){
+            model.setAttribute('gps-entity-place', `latitude: ${cal.newPosition[0]}; longitude: ${cal.newPosition[1]};`);
+        }else {
+            model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude };`);
+        }
         model.setAttribute('gltf-model', `${modelName}`);
         model.setAttribute('position', '0 '+jsonAltitude+' 0');
         model.setAttribute('animation-mixer', '');
-        model.setAttribute('scale', `${cal.objectSize}`);
+        if(distance >= 500){ model.setAttribute('scale', `${cal.objectSize}`);}
 
         model.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
