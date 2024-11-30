@@ -78,8 +78,8 @@ function staticLoadPlaces() {
             name: 'tree',
             modelName: 'https://shimizukobo.github.io/sunokawa/assets/tree.glb',
             location: {
-                lat: 32.96362312122428,
-                lng: 132.57338899298833,
+                lat: 32.96418400105985,
+                lng: 132.57354953485188,
             }
         },
 
