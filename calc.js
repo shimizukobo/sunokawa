@@ -16,9 +16,10 @@ export class CalcVR {
         this.distance = current.distanceTo(target);
         this.bearing = current.finalBearingTo(target)
         this.currentPosition = currentPosiArg;
-//        if(this.distance < 500) {
-//            this.newDistance = this.distance;
-//        }
+        if(this.distance < 500) {
+            this.newDistance = this.distance;
+        }
+    }
     //表示位置を計算
     calcNewPosition(currentPosition, bearing, newTargetToDistance) {
         const current = new LatLon(currentPosition[0], currentPosition[1]);
@@ -27,11 +28,11 @@ export class CalcVR {
     }
     // サイズを計算
     calcSizeDist(distance) {
-//        if(distance < 500){
-//            this.objectSize = '1.0 1.0 1.0';
-//            this.newDistance = distance;
-//        }else if(distance <= 1000 && distance >= 500){
-        if(distance <= 1000 && distance >= 500) {
+        if(distance < 500){
+            this.objectSize = '1.0 1.0 1.0';
+            this.newDistance = distance;
+        }else if(distance <= 1000 && distance >= 500){
+//        if(distance <= 1000 && distance >= 500) {
 //            this.objectSize = '25 25 25';
 //            this.objectSize = '2.5 2.5 2.5';
 //            this.objectSize = '1.2 1.2 1.2';
@@ -65,6 +66,7 @@ export class CalcVR {
     }
 
 }
+    
 window.onload = () => {
     navigator.geolocation.getCurrentPosition(success, error, options);
 };
@@ -99,7 +101,7 @@ function renderPlaces(places, pos) {
         }
         else{
             jsonAltitude = jsonAltitude - 33;
-        }    
+        }
 alert("\nちゃんと撮れるかな ver1.0.0\n須ノ川のクリスマスツリーを見るブラウザAR\n緯度 " + pos.coords.latitude + "\n経度 " + pos.coords.longitude + "\n標高 " + jsonAltitude + "\nボタンをタップすると撮影できます。\n\n初回の起動時には、位置情報を取得がうまくいかない場合は、\n少し時間をおいてブラウザの更新をしてください。");
     
     places.forEach((place) => {
@@ -136,7 +138,6 @@ var options = {
     maximumAge: 0
   };
 
-  
 function success(pos) {
     let places = staticLoadPlaces();
     renderPlaces(places, pos);
@@ -145,44 +146,6 @@ function success(pos) {
 function error(err) {
    console.warn(`ERROR(${err.code}): ${err.message}`);
    alert('Unable to capture current location.');
- }
-
-
-function test(elevation) {
-    test2(position,elevation);
-    navigator.geolocation.getCurrentPosition(position);
 }
 
-function test2(position,elevation) {
-
-    //まず現在地の緯度経度を取得する
-    var lat = position.coords.latitude;
-    var lon = position.coords.longitude;
-
-    //国土地理院API用に有効桁数を合わせる。
-    var adjustiveLat = lat + "00";
-    var adjustiveLon = lon + "0";
-
-    //文字列に変換
-    var stringLat = String(adjustiveLat);
-    var stringLon = String(adjustiveLon);
-
-    //国土地理院APIに現在地の緯度経度を渡して、標高を取得する
-    const url = 'http://cyberjapandata2.gsi.go.jp/general/dem/scripts/getelevation.php?lon=' + stringLon + '&lat=' + stringLat + '&outtype=JSON';
-
-    elevation = 0;
-    
-    fetch(url).then(function(response) {
-      return response.text();
-    }).then(function(text) {
-      
-      //取得したjsonをパース
-      var jsonAltitude = JSON.parse(text);
-        elevation = jsonAltitude.elevation;
-
-      //ポップアップ表示
-//      alert("現在地の標高は" + jsonAltitude.elevation + "mです。" +  "(" + "緯度：" + stringLat + "、経度：" + stringLon + ")")
-
-    });
-
-}    
+}
