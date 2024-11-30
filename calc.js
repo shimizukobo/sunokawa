@@ -31,7 +31,7 @@ export class CalcVR {
 //            this.objectSize = '1.0 1.0 1.0';
 //            this.newDistance = distance;
 //        }else if(distance <= 1000 && distance >= 500){
-        if(distance <= 1000 && distance >= 500){
+        if(distance <= 1000 && distance >= 500) {
 //            this.objectSize = '25 25 25';
 //            this.objectSize = '2.5 2.5 2.5';
 //            this.objectSize = '1.2 1.2 1.2';
@@ -99,11 +99,8 @@ function renderPlaces(places, pos) {
         }
         else{
             jsonAltitude = jsonAltitude - 33;
-//            jsonAltitude = 250;
         }    
 alert("\nちゃんと撮れるかな ver1.0.0\n須ノ川のクリスマスツリーを見るブラウザAR\n緯度 " + pos.coords.latitude + "\n経度 " + pos.coords.longitude + "\n標高 " + jsonAltitude + "\nボタンをタップすると撮影できます。\n\n初回の起動時には、位置情報を取得がうまくいかない場合は、\n少し時間をおいてブラウザの更新をしてください。");
-//jsonAltitude = -(jsonAltitude/2);
-
     
     places.forEach((place) => {
         let latitude = place.location.lat;
@@ -120,9 +117,7 @@ jsonAltitude = -(jsonAltitude*(cal.newDistance/cal.distance));
 //        model.setAttribute('look-at', '[gps-camera]');    //正面を向ける
         model.setAttribute('look-at', '');    //向きを固定する
         model.setAttribute('gps-entity-place', `latitude: ${cal.newPosition[0]}; longitude: ${cal.newPosition[1]};`);
-//        model.setAttribute('gps-entity-place', `latitude: ${place.location.lat}; longitude: ${place.location.lng};`);
         model.setAttribute('gltf-model', `${modelName}`);
-//        model.setAttribute('position', '0 0 -${jsonAltitude}');
         model.setAttribute('position', '0 '+jsonAltitude+' 0');
         model.setAttribute('animation-mixer', '');
         model.setAttribute('scale', `${cal.objectSize}`);
@@ -175,18 +170,15 @@ function test2(position,elevation) {
     //国土地理院APIに現在地の緯度経度を渡して、標高を取得する
     const url = 'http://cyberjapandata2.gsi.go.jp/general/dem/scripts/getelevation.php?lon=' + stringLon + '&lat=' + stringLat + '&outtype=JSON';
 
-//    console.log(url);
     elevation = 0;
     
     fetch(url).then(function(response) {
       return response.text();
     }).then(function(text) {
-//      console.log(text);
       
       //取得したjsonをパース
       var jsonAltitude = JSON.parse(text);
         elevation = jsonAltitude.elevation;
-//      console.log("標高：" + jsonAltitude.elevation + "m");
 
       //ポップアップ表示
 //      alert("現在地の標高は" + jsonAltitude.elevation + "mです。" +  "(" + "緯度：" + stringLat + "、経度：" + stringLon + ")")
