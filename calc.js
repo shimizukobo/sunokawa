@@ -70,8 +70,8 @@ function staticLoadPlaces() {
             name: 'ship',
             modelName: 'https://shimizukobo.github.io/sunokawa/assets/tree.glb',
             location: {
-                lat: 32.94275472461306,
-                lng: 132.56692766713076,
+                lat: 32.96362312122428,
+                lng: 132.57338899298833,
             }
         },
 
