@@ -14,6 +14,7 @@ export class CalcVR {
         const current = new LatLon(currentPosiArg[0], currentPosiArg[1]);
         const target = new LatLon(targetPosition[0], targetPosition[1]);
         this.distance = current.distanceTo(target);
+alert("距離 " + this.distance);
         this.bearing = current.finalBearingTo(target);
         this.currentPosition = currentPosiArg;
         if(this.distance < 500) {
