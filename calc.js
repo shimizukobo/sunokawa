@@ -73,7 +73,7 @@ window.onload = () => {
 function staticLoadPlaces() {
     return [
         {
-            name: 'ship',
+            name: 'tree',
             modelName: 'https://shimizukobo.github.io/sunokawa/assets/tree.glb',
             location: {
                 lat: 32.96362312122428,
