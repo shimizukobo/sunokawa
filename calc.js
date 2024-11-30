@@ -16,9 +16,9 @@ export class CalcVR {
         this.distance = current.distanceTo(target);
         this.bearing = current.finalBearingTo(target)
         this.currentPosition = currentPosiArg;
-        if(this.distance < 500) {
-            this.newDistance = this.distance;
-        }
+//        if(this.distance < 500) {
+//            this.newDistance = this.distance;
+//        }
     //表示位置を計算
     calcNewPosition(currentPosition, bearing, newTargetToDistance) {
         const current = new LatLon(currentPosition[0], currentPosition[1]);
@@ -27,13 +27,11 @@ export class CalcVR {
     }
     // サイズを計算
     calcSizeDist(distance) {
-        if(distance < 500){
-//            this.objectSize = '25 25 25';
-//            this.objectSize = '2.5 2.5 2.5';
-//            this.objectSize = '1.2 1.2 1.2';
-            this.objectSize = '1.0 1.0 1.0';
-            this.newDistance = distance;
-        }else if(distance <= 1000 && distance >= 500){
+//        if(distance < 500){
+//            this.objectSize = '1.0 1.0 1.0';
+//            this.newDistance = distance;
+//        }else if(distance <= 1000 && distance >= 500){
+        if(distance <= 1000 && distance >= 500){
 //            this.objectSize = '25 25 25';
 //            this.objectSize = '2.5 2.5 2.5';
 //            this.objectSize = '1.2 1.2 1.2';
