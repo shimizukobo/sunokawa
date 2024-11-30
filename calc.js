@@ -32,6 +32,7 @@ alert("距離 " + this.distance);
         if(distance < 500){
             this.objectSize = '1.0 1.0 1.0';
             this.newDistance = distance;
+alert("距離 " + distance);
         }else if(distance <= 1000 && distance >= 500){
 //        if(distance <= 1000 && distance >= 500) {
 //            this.objectSize = '25 25 25';
