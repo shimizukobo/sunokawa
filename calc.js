@@ -85,34 +85,6 @@ function renderPlaces(places, pos) {
     let cal = new CalcVR();
     var jsonAltitude = 0;
 
-/*
-    //まず現在地の緯度経度を取得する
-    var lat = pos.coords.latitude;
-    var lon = pos.coords.longitude;
-    //国土地理院API用に有効桁数を合わせる。
-    var adjustiveLat = lat + "00";
-    var adjustiveLon = lon + "0";
-    //文字列に変換
-    var stringLat = String(adjustiveLat);
-    var stringLon = String(adjustiveLon);
-     //国土地理院APIに現在地の緯度経度を渡して、標高を取得する
-    var url = 'http://cyberjapandata2.gsi.go.jp/general/dem/scripts/getelevation.php?lon=' + stringLon + '&lat=' + stringLat + '&outtype=JSON';
-
-    fetch(url)
-    .then((response)=> {
-        alert("OK");
-      return response.json();
-    })
-    .then((data)=> {    //取得したjsonをパース
-      jsonAltitude = JSON.stringify(data);
-        //alert("緯度 " + pos.coords.latitude + "\n経度 " + pos.coords.longitude + "\n標高 " + jsonAltitude);
-    })
-    .catch((error)=> {  //失敗時に実行される
-        //alert("Error");
-    });
-    
-
-*/
         jsonAltitude = pos.coords.altitude;
 //alert("標高 " + jsonAltitude);
         if(jsonAltitude == 'undefind') {
