@@ -80,8 +80,8 @@ function staticLoadPlaces() {
             name: 'tree',
             modelName: 'https://shimizukobo.github.io/sunokawa/assets/tree.glb',
             location: {
-                lat: 32.96418400105985,
-                lng: 132.57354953485188,
+                lat: 33.040799571546046,
+                lng: 132.4873823950795,
 //                lat: 32.975065028779326,
 //                lng: 132.57416028983047,
 //                lat: 32.96407991522515,
@@ -108,7 +108,7 @@ function renderPlaces(places, pos) {
         else{
             jsonAltitude = jsonAltitude - 33;
         }
-alert("\nちゃんと撮れるかな ver1.0.0\n須ノ川のクリスマスツリーを見るブラウザAR\n緯度 " + pos.coords.latitude + "\n経度 " + pos.coords.longitude + "\n標高 " + jsonAltitude + "\nボタンをタップすると撮影できます。\n\n初回の起動時には、位置情報を取得がうまくいかない場合は、\n少し時間をおいてブラウザの更新をしてください。");
+alert("\nちゃんと撮れるかな ver1.0.1\n須ノ川のクリスマスツリーを見るブラウザAR\n緯度 " + pos.coords.latitude + "\n経度 " + pos.coords.longitude + "\n標高 " + jsonAltitude + "\nボタンをタップすると撮影できます。\n\n初回の起動時には、位置情報を取得がうまくいかない場合は、\n少し時間をおいてブラウザの更新をしてください。");
     
     places.forEach((place) => {
         let latitude = place.location.lat;
@@ -122,7 +122,7 @@ alert("\nちゃんと撮れるかな ver1.0.0\n須ノ川のクリスマスツリ
         let model = document.createElement('a-entity');
 //        model.setAttribute('look-at', '[gps-camera]');    //正面を向ける
         model.setAttribute('look-at', '');   //向きを固定する
-alert("3距離 " + cal.distance);
+//alert("3距離 " + cal.distance);
         if(cal.distance >= 500){
 jsonAltitude = -(jsonAltitude*(cal.newDistance/cal.distance));
             model.setAttribute('gps-entity-place', `latitude: ${cal.newPosition[0]}; longitude: ${cal.newPosition[1]};`);
