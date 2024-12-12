@@ -124,10 +124,11 @@ alert("\nちゃんと撮れるかな ver1.0.1\n須ノ川のクリスマスツリ
         model.setAttribute('look-at', '');   //向きを固定する
 //alert("3距離 " + cal.distance);
         if(cal.distance >= 500){
-jsonAltitude = -(jsonAltitude*(cal.newDistance/cal.distance));
+jsonAltitude = (20-jsonAltitude)*(cal.newDistance/cal.distance)+jsonAltitude;
+//jsonAltitude = -(jsonAltitude*(cal.newDistance/cal.distance))+0;
             model.setAttribute('gps-entity-place', `latitude: ${cal.newPosition[0]}; longitude: ${cal.newPosition[1]};`);
         }else {
-jsonAltitude = -jsonAltitude;
+jsonAltitude = 20-jsonAltitude;
             model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
         }
         model.setAttribute('gltf-model', `${modelName}`);
