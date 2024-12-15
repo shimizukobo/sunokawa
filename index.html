@@ -37,6 +37,12 @@
             arjs="sourceType: webcam; debugUIEnabled: false;"
         >
         <a-camera gps-camera arjs-look-controls='smoothingFactor: 0.1' rotation-reader></a-camera>
+<!-- バックミュージック -->
+		<a-assets timeout="1000">
+			<audio id="audio01" src="https://shimizukobo.github.io/sunokawa/assets/music.mp3" preload="auto"></audio>
+		</a-assets>
+		<a-sound id="my_sound01" src="#audio01" position="0 1.2 -3" autoplay="true" loop="true"></a-sound>
+
         </a-scene>
         <button id="screenshot-button"></button>
         <script src="https://shimizukobo.github.io/sunokawa/calc.js" type="module"></script>
