@@ -47,13 +47,12 @@
         <button id="screenshot-button"></button>
 
 	<script>
-		// ユーザーに「許可」を求めるダイアログを表示
-		DeviceOrientationEvent.requestPermission().then( function( response ){
-			if( response === 'granted' ){
-			}
-		}).catch( function( e ){
-    			console.log( e );
-		});
+// ユーザーに「許可」を求めるダイアログを表示
+if (DeviceOrientationEvent && DeviceOrientationEvent.requestPermission &&
+ typeof DeviceOrientationEvent.requestPermission === 'function'
+ ) {
+DeviceOrientationEvent.requestPermission();
+}
 	</script>
 
         <script src="https://shimizukobo.github.io/sunokawa/calc.js" type="module"></script>
