@@ -48,10 +48,27 @@
 
 	<script>
 // ユーザーに「許可」を求めるダイアログを表示
-if (DeviceOrientationEvent && DeviceOrientationEvent.requestPermission &&
- typeof DeviceOrientationEvent.requestPermission === 'function'
- ) {
-DeviceOrientationEvent.requestPermission();
+let elm_button = document.getElementById('enable');
+
+if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+    elm_button.innerText = 'iOS 13+の場合、許可が必要です。'
+    elm_button.addEventListener('click', ClickResponse);
+} else {
+//    elm_button.innerText = `iOS 13+でない場合、許可は不要です。\n※iOS 12.2 ~ 13.0かつsafariの場合、端末側の許可設定が必要です。`
+//    elm_button.disabled = true;
+//    window.addEventListener( 'deviceorientation', DeviceOrientation );
+}
+//if (location.protocol == 'http:') {
+//    elm_button.innerText = '通信が暗号化されていないため、動作しない可能性があります。'
+//}
+
+function ClickResponse() {
+    // iOS 13+の許可要求ダイアログ表示
+    DeviceOrientationEvent.requestPermission().then( function( response ){
+        if( response === 'granted' ){
+//            window.addEventListener( 'deviceorientation', DeviceOrientation );
+        }
+    }).catch(function (e) { console.log(e) });
 }
 	</script>
 
